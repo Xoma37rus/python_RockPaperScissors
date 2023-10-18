@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import *
+from tkinter import messagebox
 import pygame
 from pygame import *
 from PIL import Image, ImageTk
@@ -100,12 +101,24 @@ class Game(Frame):
                                  f" {self.lose}\nНичьи́х: {self.drow}")
 
         del comp_choise
+
+def on_closing(): #Функция подстраховка случайного закрытия.
+    if messagebox.askokcancel("Выход из игры: Камень, ножницы, бумага ", 'Ну что выходим?'):
+        root.destroy()
+
 if __name__ == '__main__':
     root = Tk()
+    pygame.init()
+    root.protocol("WM_DELETE_WINDOW", on_closing)
     root.geometry("500x460+200+200")
     root.iconbitmap(IMG_URL + '\img\icon.ico')
     root.title("Камень, ножницы, бумага")
     root.resizable(False, False)
     root["bg"] = "#FFF"
     Game(root, IMG_URL).pack()
+    frame_game = Canvas(root, width=195, height=240, highlightthickness=0)
+    frame_game.pack(pady=215)
+
+
+
     root.mainloop()
