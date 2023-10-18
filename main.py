@@ -116,8 +116,10 @@ if __name__ == '__main__':
     root.resizable(False, False)
     root["bg"] = "#FFF"
     Game(root, IMG_URL).pack()
-    frame_game = Canvas(root, width=195, height=240, highlightthickness=0)
-    frame_game.pack(pady=215)
+    frame_game = Canvas(root, width=330, height=240, bd=2,bg="black",  highlightthickness=0)
+    frame_game.pack(side=BOTTOM)
+    frame_game.create_text(167, 120, text='Для начала игры нажмите "ПРОБЕЛ"', justify=CENTER, font="Verdana 12", fill="white")
+
 
 
 
